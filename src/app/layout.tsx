@@ -6,8 +6,8 @@ import PrelineScript from '@/util/PrelineScript';
 import { UIProvider } from '@/util/UIProvider';
 
 export const metadata: Metadata = {
-  title: 'Pizza Fiesta: Order Delicious Pizzas Online',
-  description: 'Welcome to PizzaFiesta, where every order is a celebration of flavors!',
+  title: 'Melba',
+  description: 'Welcome to Melba!',
 }
 
 export default function RootLayout({
