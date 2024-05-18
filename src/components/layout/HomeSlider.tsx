@@ -10,7 +10,7 @@ const HomeSlider = ({ className }: SectionProps) => {
           <div className="hs-carousel-body w-full absolute top-0 bottom-0 start-0 flex flex-nowrap duration-700 ease-in-out delay-200 opacity-0">
 
             {/*First Slide*/}
-            <SlideBackground bgImage={'/assets/bg_dark.jpg'}>
+            <SlideBackground bgImage={'/assets/bg_pink.png'}>
               <div className="w-full flex flex-col justify-center text-center h-full absolute z-10">
                 <span className="font-nothingYouCouldDo text-primary text-[40px] mb-4">Welcome</span>
                 <h1 className="mb-8 text-[40px]">We make world class <span className='block'>Ice Cream</span></h1>
@@ -23,7 +23,7 @@ const HomeSlider = ({ className }: SectionProps) => {
             </SlideBackground>
 
             {/*Second Slide*/}
-            <SlideBackground bgImage={'/assets/bg_dark.jpg'}>
+            <SlideBackground bgImage={'/assets/bg_pink.png'}>
               <div className="w-full flex flex-row gap-6 justify-center items-center h-full absolute z-10">
                 <div className='w-1/4'>
                   <Image src="/assets/slider_ice_1.png" alt=""/>
@@ -41,7 +41,7 @@ const HomeSlider = ({ className }: SectionProps) => {
             </SlideBackground>
 
             {/*Third Slide*/}
-            <SlideBackground bgImage={'/assets/bg_dark.jpg'}>
+            <SlideBackground bgImage={'/assets/bg_pink.png'}>
               <div className="w-full flex flex-row gap-6 justify-center items-center h-full absolute z-10">
                 <div className='max-w-xl text-end mr-6'>
                   <span className="font-nothingYouCouldDo text-primary text-[40px] mb-4">Creative</span>

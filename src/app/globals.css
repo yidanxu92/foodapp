@@ -19,12 +19,13 @@ section.hero{
   grid-template-columns: .4fr .6fr;
 }
 
+
 .input {
-  @apply block w-full mb-4 rounded-xl border p-2 border-gray-300 bg-gray-100 text-dark
+  @apply block w-full mb-4 rounded-xl border p-2 border-gray-300 bg-white text-black
 }
 
 .input:disabled{
-  @apply cursor-not-allowed bg-dark text-gray-500
+  @apply cursor-not-allowed bg-light text-gray-500
 }
 
 *[data-slot="input"] {
@@ -32,7 +33,7 @@ section.hero{
 }
 
 label{
-  @apply text-gray-400 text-sm leading-tight;
+  @apply text-gray-500 text-sm leading-tight;
 }
 
 button[type="button"], a[role="button"] {

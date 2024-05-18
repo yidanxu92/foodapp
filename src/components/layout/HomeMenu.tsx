@@ -33,8 +33,32 @@ const HomeMenu = ({ className }: SectionProps) => {
 
     },
 
+    {
+      _id: 4,
+      name:"Matcha",
+      description:"Green tea ice cream made with organic matcha powder.",
+      image:"/assets/matcha.png",
+      basePrice:5,
+    },
 
-    // Add more menu items as needed
+    {
+      _id: 5,
+      name:"Mango",
+      description:"Tropical mango ice cream made with fresh mangoes.",
+      image:"/assets/mango.png",
+      basePrice:5,
+    },
+
+    {
+      _id: 6,
+      name:"Coffee",
+      description:"Rich coffee ice cream made with organic coffee beans.",
+      image:"/assets/coffee.png",
+      basePrice:5,
+    }
+
+
+    
   ];
 
 
@@ -43,7 +67,7 @@ const HomeMenu = ({ className }: SectionProps) => {
     <section className={className}>
       <SectionHeader
         header={'Flavors of Today'}
-        description={'Check out our newest flavors!'}
+        description={'Check out our newest flavors! All Flavors Available by the Pint - $5 per Pint!'}
       />
       <div className='grid md:grid-cols-3 md:gap-0 grid-cols-1 gap-4'>
         {menuItems && menuItems.map((menuItem, index) => (

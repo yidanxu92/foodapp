@@ -18,21 +18,21 @@ const BusinessInfo = ({className}:SectionProps) => {
               <PhoneIcon className={'w-10 fill-primary'}/>
               <div className='text-center'>
               <p className='text-lg font-semibold'>(609) 512 4003</p>
-              <p className='text-gray-400'>Call us now!</p>
+              <p className='text-gray-300'>Call us now!</p>
               </div>
             </div>
             <div className='flex gap-4 items-center'>
               <LocationIcon className={'w-10 stroke-primary'}/>
               <div className='text-center'>
               <p className='text-lg font-semibold'>2685 Lawrenceville Rd, </p>
-              <p className='text-gray-400'>Lawrenceville,NJ,08648</p>
+              <p className='text-gray-300'>Lawrenceville,NJ,08648</p>
               </div>
             </div>
             <div className='flex gap-4 items-center'>
               <ClockIcon className={'w-10 stroke-primary'}/>
               <div className='text-center'>
               <p className='text-lg font-semibold'>Open Thursday-Sunday</p>
-              <p className='text-gray-400'>2:00pm - 8:00pm</p>
+              <p className='text-gray-300'>2:00pm - 8:00pm</p>
               </div>
             </div>
           </div>

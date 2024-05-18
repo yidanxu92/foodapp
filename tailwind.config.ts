@@ -14,10 +14,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#00f56b',
-        secondary: '#2563eb',
-        dark: "#121618",
-        light: "#f9fafb"
+        primary: '#A1EACD',
+        secondary: '#F6E6E0',
+        dark: "#7789D8",
+        light: "#FEF2D8"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
@@ -44,7 +44,7 @@ const config: Config = {
       },
     },
   },
-  darkMode: "class",
+  
   plugins: [
     require('preline/plugin'),
     nextui(),
