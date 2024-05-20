@@ -1,5 +1,5 @@
 type MenuItemAddOn = {
-    _id?: string;
+    _id?: string | number;
     name: string;
     price: string | number;
   }

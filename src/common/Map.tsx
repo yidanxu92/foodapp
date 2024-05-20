@@ -4,7 +4,7 @@ import Loader from "./Loader";
 
 const Map = () => {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: "AIzaSyDXD0z7x4TV6fMNyCT6PUJbDTHJzIf_lXE",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
   });
 
   // static lat and lng
