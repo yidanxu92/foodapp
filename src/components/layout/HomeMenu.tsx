@@ -9,7 +9,7 @@ const HomeMenu = ({ className }: SectionProps) => {
   const menuItems = [
     {
       _id: 1,
-      name: "vanilla",
+      name: "Vanilla",
       description: "Classic vanilla ice cream.",
       image: "/assets/vanilla.png",
       basePrice: 5,
@@ -17,7 +17,7 @@ const HomeMenu = ({ className }: SectionProps) => {
     },
     {
       _id: 2,
-      name: "chocolate",
+      name: "Chocolate",
       description: "Delicious milk chocolate ice cream made with valhora chocolate.",
       image: "/assets/chocolate.png",
       basePrice: 5,
@@ -26,7 +26,7 @@ const HomeMenu = ({ className }: SectionProps) => {
 
     {
       _id: 3,
-      name: "strawberry",
+      name: "Strawberry",
       description: "Fresh strawberry ice cream made with organic strawberries.",
       image: "/assets/strawberry.png",
       basePrice: 5,

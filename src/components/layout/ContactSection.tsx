@@ -5,7 +5,7 @@ import ContactForm from "../../common/Form/ContactForm";
 
 
 
-const contactInfo =({className}:SectionProps) => {
+const ContactSection =({className}:SectionProps) => {
     return(
         <section id="contact"  className={`bg-[url('/assets/bg_beige.png')] bg-repeat text-dark ${className}`}>
             <div className="grid grid-cols-2">
@@ -27,4 +27,4 @@ const contactInfo =({className}:SectionProps) => {
    
 }
 
-export default contactInfo
+export default ContactSection

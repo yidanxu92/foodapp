@@ -19,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" className='scroll-smooth'>
       <head>
+        <link rel="icon" href="/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,500,700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
       </head>

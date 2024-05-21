@@ -4,7 +4,7 @@ import AboutSection from "../components/layout/AboutSection";
 import HomeMenu from "../components/layout/HomeMenu";
 import HomeSlider from "../components/layout/HomeSlider";  
 import ServicesSection from "../components/layout/ServicesSection"; 
-import ContactInfo from "../components/layout/ContactInfo";
+import ContactSection from "../components/layout/ContactSection";
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
     <AboutSection />
     <ServicesSection/>
     <HomeMenu className="pt-24"/>
-    <ContactInfo/>
+    <ContactSection/>
       
     </>
   )
