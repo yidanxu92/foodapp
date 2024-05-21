@@ -70,9 +70,9 @@ const HomeMenu = ({ className }: SectionProps) => {
         description={'Check out our newest flavors! All Flavors Available by the Pint - $5 per Pint!'}
       />
       <div className='grid md:grid-cols-3 md:gap-0 grid-cols-1 gap-4'>
-        {menuItems && menuItems.map((menuItem, index) => (
-          <HomeMenuItemCard key={menuItem._id} menuItem={menuItem} />
-        ))}
+        {menuItems.map((menuItem, index) =>{
+          return <HomeMenuItemCard key={menuItem._id} menuItem={menuItem} index={index} />
+})}
       </div>
     </section>
   )

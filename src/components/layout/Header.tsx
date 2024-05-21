@@ -12,21 +12,34 @@ const Header = () => {
   return (
     <Navbar className='font-semibold bg-blue-500 py-3' classNames={{ item: 'data-[active=true]:text-primary' }}>
       <NavbarBrand>
-        <Link href="/" className='text-primary text-2xl font-josefin'>Melba's</Link>
+        <Link href="/" passHref> 
+        <a className='text-primary text-2xl font-josefin'>Melba's</a>
+        </Link>
       </NavbarBrand>
 
       <NavbarContent className="gap-8" justify="center">
         <NavbarItem isActive={pathname === '/'}>
-          <Link href="/" aria-current="page" className='hover:text-primary'>Home</Link>
+          <Link href="/" passHref>
+            <a aria-current="page" className='hover:text-primary'>Home</a>
+          </Link>
         </NavbarItem>
+
         <NavbarItem isActive={pathname === '/menu'}>
-          <Link href="/menu" className='hover:text-primary'>Menu</Link>
+          <Link href='/menu' passHref>
+            <a className='hover:text-primary'>Menu</a>
+          </Link>
         </NavbarItem>
+
         <NavbarItem isActive={pathname === '/services'}>
-          <Link href="/services" className='hover:text-primary'>Services</Link>
+          <Link href="/services" passHref>
+            <a className='hover:text-primary'>Services</a>
+            </Link>
         </NavbarItem>
+
         <NavbarItem isActive={pathname === '/about'}>
-          <Link href="/about" className='hover:text-primary'>About</Link>
+          <Link href="/about" passHref>
+            <a className='hover:text-primary'>About</a>
+            </Link>
         </NavbarItem>
     
       </NavbarContent>
@@ -36,10 +49,16 @@ const Header = () => {
           <div className='flex gap-6 items-center'>
             
               <>
-                <Link href={'/login'} className='hover:text-primary'>Login</Link>
-                <Button as={Link} color="primary" href={'/register'} className='font-semibold rounded-full px-6 py-2 text-dark'>
-                  Sign Up
-                </Button>
+                <Link href={'/login'} passHref>
+                  <Button as='a' color="primary" className='hover:text-primary font-semibold rounded-full px-6 py-2 text-dark'>
+                    Login
+                  </Button>
+                </Link>
+                <Link href='/register' passHref>
+                  <Button as='a' color="primary" className='hover:text-primary font-semibold rounded-full px-6 py-2 text-dark'>
+                    Sign Up
+                  </Button>
+                </Link>
               </>
             
           </div>
