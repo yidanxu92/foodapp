@@ -1,7 +1,7 @@
 'use client'
 
 import { SectionProps } from "@/types/SectionProps"
-import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ServicesSection = ({className}:SectionProps) => {
     return(
@@ -13,49 +13,34 @@ const ServicesSection = ({className}:SectionProps) => {
                         What we can do for you
                         </p>
                 </div>
+
                 <div className='grid grid-cols-3 gap-6'>
                     <div className='flex flex-col gap-3 text-center p-6'>
                         <div className="flex items-center text-center justify-center mb-5">
-                            <motion.span
-                                initial={{ rotate:0}}
-                                whileHover={{rotate:225, transition:{duration:1,ease:'easeInOut'}}}
-                                className='w-[100px]h-[100px] border border-dark/20 flex justify-center items-center hover:bg-light relative'>
-                                    </motion.span>  
-                                    <span className='absolute'>Option 1</span>
-                                    </div>
-
-                                    <h3 className='uppercase mb-4'>Scoops</h3>
-                                    <div>Two scoops of ice cream on a waffle cone</div>
-                                    </div>
-
-                                    <div className='flex flex-col gap-3 text-center p-6'>
-                                        <div className="flex items-center text-center justify-center mb-5">
-                                            <motion.span
-                                                initial={{ rotate:0}}
-                                                whileHover={{rotate:225, transition:{duration:1,ease:'easeInOut'}}}
-                                                className='w-[100px]h-[100px] border border-dark/20 flex justify-center items-center hover:bg-light relative'>
-                                                    </motion.span>  
-                                                    <span className='absolute'>Option 2</span>
-                                                    </div>
-                                                    <h3 className='uppercase mb-4'>Ice cream flight</h3>
-                                                    <div>Our ice cream flights let you enjoy four fabulicious flavors all at once</div>
-                                                    </div>
-
-                                                    <div className='flex flex-col gap-3 text-center p-6'>
-                                                        <div className="flex items-center text-center justify-center mb-5">
-                                                            <motion.span
-                                                                initial={{ rotate:0}}
-                                                                whileHover={{rotate:225, transition:{duration:1,ease:'easeInOut'}}}
-                                                                className='w-[100px]h-[100px] border border-dark/20 flex justify-center items-center hover:bg-light relative'>
-                                                                    </motion.span>  
-                                                                    <span className='absolute'>Option 3</span>
-                                                                    </div>
-                                                                    <h3 className='uppercase mb-4'>Milkshake</h3>
-                                                                    <div>A large size malted milkshake</div>
-                                                                    </div>
-                                                                    </div>
-                                                                    </div>
-                                                                    </section>
+                        <Image src="/assets/option_1.png" alt="option1" width={100} height={100} layout="responsive"/>
+                        </div>
+                        <h3 className='uppercase mb-4'>Scoops</h3>
+                        <div>Two scoops of ice cream on a waffle cone</div>
+                        </div>
+                        
+                        <div className='flex flex-col gap-3 text-center p-6'>
+                            <div className="flex items-center text-center justify-center mb-5">
+                                <Image src="/assets/option_2.png" alt="option2" width={100} height={100} layout="responsive"/>
+                                </div>
+                                <h3 className='uppercase mb-4'>Ice cream flight</h3>
+                                <div>Our ice cream flights let you enjoy four fabulicious flavors all at once</div>
+                                </div>
+                                
+                                <div className='flex flex-col gap-3 text-center p-6'>
+                                    <div className="flex items-center text-center justify-center mb-5">
+                                        <Image src="/assets/option_3.png" alt="option3" width={100} height={100} layout="responsive"/>
+                                        </div>
+                                        <h3 className='uppercase mb-4'>Milkshake</h3>
+                                        <div>A large size malted milkshake</div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </section>
 
 
 

@@ -10,9 +10,9 @@ const HomeSlider = ({ className }: SectionProps) => {
           <div className="hs-carousel-body w-full absolute top-0 bottom-0 start-0 flex flex-nowrap duration-700 ease-in-out delay-200 opacity-0">
 
             {/*First Slide*/}
-            <SlideBackground bgImage={'/assets/bg_pink.png'}>
+            <SlideBackground bgImage={'/assets/slider_bg_2.png'}>
               <div className="w-full flex flex-col justify-center text-center h-full absolute z-10">
-                <span className="font-nothingYouCouldDo text-primary text-[40px] mb-4">Welcome</span>
+                <span className="font-nothingYouCouldDo text-dark text-[40px] mb-4">Welcome</span>
                 <h1 className="mb-8 text-[40px]">We make world class <span className='block'>Ice Cream</span></h1>
                 <h3 className="mb-16">Artisan hand-made<span className='block'>ice cream</span></h3>
                 <p>
@@ -23,13 +23,13 @@ const HomeSlider = ({ className }: SectionProps) => {
             </SlideBackground>
 
             {/*Second Slide*/}
-            <SlideBackground bgImage={'/assets/bg_pink.png'}>
+            <SlideBackground bgImage={'/assets/slider_bg_5.png'}>
               <div className="w-full flex flex-row gap-6 justify-center items-center h-full absolute z-10">
-                <div className='w-1/4'>
-                  <Image src="/assets/slider_ice_1.png" alt=""/>
+                <div className='w-1/2'>
+                  <Image src="/assets/slider_ice_cream_2.png" alt=""/>
                 </div>
                 <div className='max-w-xl ml-6'>
-                  <span className="font-nothingYouCouldDo text-primary text-[40px] mb-4">Best</span>
+                  <span className="font-nothingYouCouldDo text-dark text-[40px] mb-4">Best</span>
                   <h1 className="mb-8 text-[40px]">Ice Cream</h1>
                   <h3 className="mb-16">We make the best ice cream in the world</h3>
                   <p>
@@ -41,10 +41,10 @@ const HomeSlider = ({ className }: SectionProps) => {
             </SlideBackground>
 
             {/*Third Slide*/}
-            <SlideBackground bgImage={'/assets/bg_pink.png'}>
+            <SlideBackground bgImage={'/assets/slider_bg_5.png'}>
               <div className="w-full flex flex-row gap-6 justify-center items-center h-full absolute z-10">
                 <div className='max-w-xl text-end mr-6'>
-                  <span className="font-nothingYouCouldDo text-primary text-[40px] mb-4">Creative</span>
+                  <span className="font-nothingYouCouldDo text-dark text-[40px] mb-4">Creative</span>
                   <h1 className="mb-8 text-[40px]">Flavors</h1>
                   <h3 className="mb-16">Beyond your imagination.</h3>
                   <p>
@@ -52,8 +52,8 @@ const HomeSlider = ({ className }: SectionProps) => {
                     <Button as={Link} href='/menu' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
                   </p>
                 </div>
-                <div className='w-1/4'>
-                  <Image src="/assets/slider_ice_2.png" alt=""/>
+                <div className='w-1/2'>
+                  <Image src="/assets/slider_ice_cream_1.png" alt=""/>
                 </div>
               </div>
             </SlideBackground>

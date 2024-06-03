@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <Navbar className='font-semibold bg-blue-500 py-3' classNames={{ item: 'data-[active=true]:text-primary' }}>
       <NavbarBrand>
-        <Link href="/" passHref className='text-primary text-2xl font-josefin'> 
+        <Link href="/" passHref className='text-melba text-2xl font-josefin'> 
         Melba's
         </Link>
       </NavbarBrand>
@@ -25,7 +25,7 @@ const Header = () => {
         </NavbarItem>
 
         <NavbarItem isActive={pathname === '/services'}>
-          <Link href="/services" passHref className='hover:text-primary'>
+          <Link href="/services" passHref className='hover:text-dark'>
             Services
             </Link>
         </NavbarItem>

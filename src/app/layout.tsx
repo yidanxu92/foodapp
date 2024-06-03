@@ -15,27 +15,28 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}
+) 
+
+{
+ ;
   return (
-    <html lang="en" className='scroll-smooth'>
+    <html lang="en" className='scroll-smooth light'>
       <head>
         <link rel="icon" href="/favicon.png" />
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:400,500,700&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
       </head>
       <body className="font-poppins bg-[url('/assets/bg_peach.png')] bg-repeat bg-fixed">
-        <UIProvider>
-          <main>
-           
-              <Toaster />
-              <Header />
-              {children}
-              <Footer />
-           
-          </main>
+        <UIProvider> 
+            <Toaster />
+            <Header/>
+            {children}
+            <Footer/>
+            <PrelineScript/>
         </UIProvider>
-      </body>
-      <PrelineScript />
+
+        </body>
     </html>
   )
 }

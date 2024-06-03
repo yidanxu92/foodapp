@@ -8,7 +8,7 @@ const AboutSection = ({className}:SectionProps) => {
       <div className='grid grid-cols-2'>
         <div className="bg-[url('/assets/about.jpeg')] bg-center bg-no-repeat bg-cover"></div>
         <div className="p-24">
-          <h1 className="mb-4">Welcome to <span className=" text-primary">Melba's</span></h1>
+          <h1 className="mb-4">Welcome to <span className=" text-melba">Melba's</span></h1>
           <div className='text-dark-500'>
             <p className='mb-4'>
               At Melba's, our story is a delightful journey of passion and flavor.

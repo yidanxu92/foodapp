@@ -17,7 +17,8 @@ const config: Config = {
         primary: '#A1EACD',
         secondary: '#F6E6E0',
         dark: "#7789D8",
-        light: "#FEF2D8"
+        light: "#FEF2D8",
+        melba:"#E3ABE8"
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
