@@ -42,10 +42,12 @@ const RegisterPage = () => {
               })
 
               // 打印响应的原始内容
-              const text = await response.text();
+              /*const text = await response.text();
               console.log('Response text:', text);
               
-              const data = JSON.parse(text);
+              const data = JSON.parse(text);*/
+
+              const data = await response.json();
 
               if (response.ok) {
                 setUserCreated(true);
