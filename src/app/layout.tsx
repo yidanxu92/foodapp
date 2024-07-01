@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer'
 import { Toaster } from 'react-hot-toast'
 import PrelineScript from '@/util/PrelineScript';
 import { UIProvider } from '@/util/UIProvider';
+import  AppContextProvider  from "@/util/ContextProvider";
 
 export const metadata: Metadata = {
   title: 'Melba',
@@ -28,13 +29,19 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet" />
       </head>
       <body className="font-poppins bg-[url('/assets/bg_peach.png')] bg-repeat bg-fixed">
+
         <UIProvider> 
-            <Toaster />
-            <Header/>
-            {children}
-            <Footer/>
+        <AppContextProvider>
+          <Toaster />
+          <Header/>
+          {children}
+          <Footer/>
+          </AppContextProvider>
+          </UIProvider>
+            
             <PrelineScript/>
-        </UIProvider>
+        
+       
 
         </body>
     </html>

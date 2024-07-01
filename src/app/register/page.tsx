@@ -6,11 +6,11 @@ import GoogleIcon from "@/icons/GoogleIcon";
 import { Button, Link } from "@nextui-org/react";
 import Divider from '@mui/material/Divider';    
 import { FormEvent, useState, useRef } from "react";
-import EmailInput from "@/common/form/EmailInput";
-import PasswordInput from "@/common/form/PasswordInput";
-import NameInput from "@/common/form/NameInput";
+import EmailInput from "@/components/common/form/EmailInput";
+import PasswordInput from "@/components/common/form/PasswordInput";
+import NameInput from "@/components/common/form/NameInput";
 import { useRouter } from "next/navigation";
-import ModalContainer from "@/common/ModalContainer";
+import ModalContainer from "@/components/common/ModalContainer";
 import { signIn} from "next-auth/react";
 import {useEffect} from "react";
 

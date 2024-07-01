@@ -16,8 +16,8 @@ const HomeSlider = ({ className }: SectionProps) => {
                 <h1 className="mb-8 text-[40px]">We make world class <span className='block'>Ice Cream</span></h1>
                 <h3 className="mb-16">Artisan hand-made<span className='block'>ice cream</span></h3>
                 <p>
-                  <Button as={Link} href='/menu' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
-                  <Button as={Link} href='/menu' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
+                  <Button as={Link} href='/services' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
+                  <Button as={Link} href='/services' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
                 </p>
               </div>
             </SlideBackground>
@@ -33,8 +33,8 @@ const HomeSlider = ({ className }: SectionProps) => {
                   <h1 className="mb-8 text-[40px]">Ice Cream</h1>
                   <h3 className="mb-16">We make the best ice cream in the world</h3>
                   <p>
-                    <Button as={Link} href='/menu' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
-                    <Button as={Link} href='/menu' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
+                    <Button as={Link} href='/services' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
+                    <Button as={Link} href='/services' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
                   </p>
                 </div>
               </div>
@@ -48,8 +48,8 @@ const HomeSlider = ({ className }: SectionProps) => {
                   <h1 className="mb-8 text-[40px]">Flavors</h1>
                   <h3 className="mb-16">Beyond your imagination.</h3>
                   <p>
-                    <Button as={Link} href='/menu' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
-                    <Button as={Link} href='/menu' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
+                    <Button as={Link} href='/services' color='primary' radius='none' size='lg' className='py-4 px-6 text-dark'>Order Now</Button>
+                    <Button as={Link} href='/services' radius='none' size='lg' className='bg-transparent border-2 py-4 px-6 ml-2'>View Menu</Button>
                   </p>
                 </div>
                 <div className='w-1/2'>

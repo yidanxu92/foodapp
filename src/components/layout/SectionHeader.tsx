@@ -1,6 +1,6 @@
 
 import React from 'react'
-import DecoDivider from '../../common/DecoDivider'
+import DecoDivider from '../common/DecoDivider'
 
 interface SectionHeaderProps {
   header: string

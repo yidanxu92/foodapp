@@ -16,7 +16,7 @@ const EmailInput =({emailValue,setEmail,disabled,className}:EmailInputProps)=>{
 
     const isInvalid = useMemo(()=> {
         if (emailValue === '') return false;
-        return validateEmail(emailValue);
+        return !validateEmail(emailValue);
     },[emailValue]);
 
     return(
@@ -32,7 +32,7 @@ const EmailInput =({emailValue,setEmail,disabled,className}:EmailInputProps)=>{
             isDisabled={disabled}
             className={className}
             classNames={{label:"pl-3"}}
-            errorMessage={isInvalid && "Please enter a valid email"}
+            errorMessage={isInvalid ? "Please enter a valid email":""}
             endContent={
                 <MailIcon
                 className={`w-6 place-self-center ${isInvalid ? "stroke-red-500" : ""}`} />

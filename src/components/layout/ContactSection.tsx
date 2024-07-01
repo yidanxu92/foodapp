@@ -1,7 +1,7 @@
 'use client'
 import { SectionProps } from "@/types/SectionProps";
-import Map from "../../common/Map";
-import ContactForm from "../../common/form/ContactForm";
+import Map from "../common/Map";
+import ContactForm from "../common/form/ContactForm";
 
 
 
