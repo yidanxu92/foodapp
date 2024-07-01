@@ -18,7 +18,7 @@ const Header = () => {
     <Navbar className='font-semibold bg-blue-500 py-3'>
       <NavbarBrand>
         <Link href="/" passHref className='text-melba text-2xl font-josefin'>
-          Melba's
+          Melba
         </Link>
       </NavbarBrand>
 
