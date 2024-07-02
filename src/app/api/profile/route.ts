@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+//import NextAuth from "../auth/[...nextauth]/route";
 import { User } from "@/app/models/User";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -13,6 +14,7 @@ export async function PUT(req: NextRequest) {
       return NextResponse.json(updatedUser)
     } else { // update current user
       const session = await getServerSession(authOptions);
+      //const session = await getServerSession(NextAuth); // 使用修改后的导入值
       const email = session?.user?.email;
       const updatedUser = await User.findOneAndUpdate({ email }, data, { new: true })
       return NextResponse.json(updatedUser)
@@ -26,6 +28,7 @@ export async function GET() {
   try {
     mongoose.connect(process.env.MONGODB_URI!);
     const session = await getServerSession(authOptions);
+   // const session = await getServerSession(NextAuth);
     const email = session?.user?.email;
     if (!email) {
       return NextResponse.json(false);
