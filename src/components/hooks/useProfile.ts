@@ -2,42 +2,53 @@ import UserProfile from "@/types/UserProfile";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
-const useProfile = () => {
-    const { data: session, status } = useSession();
-    const [data, setData] = useState<UserProfile | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<any>(null);
+export interface ProfileData {
+  _id: string;
+  name: string;
+  userName?: string;
+  email: string;
+  phone?: string;
+  streetAddress?: string;
+  postalCode?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  isAdmin?: boolean;
+}
 
-    useEffect(() => {
-        if (status === 'authenticated') {
-            const fetchData = async () => {
-                try {
-                    const response = await fetch('/api/profile', {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        }
-                    });
+export const useProfile = () => {
+  const { data: session, status } = useSession();
+  const [data, setData] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
-                    if (!response.ok) {
-                        throw new Error('Failed to fetch profile');
-                    }
+  useEffect(() => {
+   
+    if (status === 'unauthenticated') {
+      setLoading(false);
+      return;
+    }
 
-                    const profileData = await response.json();
-                    setData(profileData);
-                } catch (error) {
-                    setError(error);
-                } finally {
-                    setLoading(false);
-                }
-            };
+    if (status === 'authenticated') {
+      fetch('/api/profile')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error('Failed to fetch profile');
+          }
+          return res.json();
+        })
+        .then(data => {
+          setData(data);
+          setError(null);
+        })
+        .catch(err => {
+          setError(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }
+  }, [status]); 
 
-            fetchData();
-        } else {
-            setLoading(false); // If not authenticated, set loading to false
-        }
-    }, [status]);
-
-    return { data, loading, error };
-};
-
-export default useProfile;
+  return { data, loading, error };
+}

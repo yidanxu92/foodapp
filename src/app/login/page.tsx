@@ -18,12 +18,18 @@ const LoginPage = () => {
     event.preventDefault();
     setLoginInProgress(true);
     setError('');
-    const response = await signIn('credentials', { email, password, redirect: false });
-    if (response?.ok) {
-      router.push('/')
-    } else {
-      setError("The email or password you entered is incorrect.");
-    }
+
+    try{
+        const response = await signIn('credentials', { email, password, redirect: false });
+        if (response?.ok) {
+            router.push('/')
+        } else {
+            setError("The email or password you entered is incorrect.");
+        }
+    }catch (error) {
+        setError("Failed to log in. Please try again later.");
+      }
+    
     setLoginInProgress(false);
   }
 

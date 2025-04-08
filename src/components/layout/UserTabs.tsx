@@ -7,11 +7,11 @@ import { Button, Link } from "@nextui-org/react"
 import { usePathname } from "next/navigation"
 
 interface UserTabsProps {
-  admin: boolean
+  admin?: boolean
   className?: string
 }
 
-const UserTabs = ({ admin, className }: UserTabsProps) => {
+const UserTabs = ({ admin = false, className }: UserTabsProps) => {
   const pathname = usePathname();
   const activeTabStyle = "bg-primary text-dark border-white"
   const inactiveTabStyle = "bg-dark border-primary text-primary hover:bg-primary hover:text-dark hover:border-white"

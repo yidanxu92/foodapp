@@ -1,67 +1,18 @@
-
-import React from 'react'
+'use client'
+import React ,{ useEffect, useState }from 'react'
 import MenuItem from '@/types/MenuItem'
 import HomeMenuItemCard from './HomeMenuItemCard'
 import SectionHeader from './SectionHeader'
 import { SectionProps } from '@/types/SectionProps'
 
 const HomeMenu = ({ className }: SectionProps) => {
-  const menuItems = [
-    {
-      _id: 1,
-      name: "Vanilla",
-      description: "Classic vanilla ice cream.",
-      image: "/assets/vanilla.png",
-      basePrice: 5,
-  
-    },
-    {
-      _id: 2,
-      name: "Chocolate",
-      description: "Delicious milk chocolate ice cream made with valhora chocolate.",
-      image: "/assets/chocolate.png",
-      basePrice: 5,
+  const [menuItems, setMenuItems] = useState<MenuItem[]>([])
 
-    },
-
-    {
-      _id: 3,
-      name: "Strawberry",
-      description: "Fresh strawberry ice cream made with organic strawberries.",
-      image: "/assets/strawberry.png",
-      basePrice: 5,
-
-    },
-
-    {
-      _id: 4,
-      name:"Matcha",
-      description:"Green tea ice cream made with organic matcha powder.",
-      image:"/assets/matcha.png",
-      basePrice:5,
-    },
-
-    {
-      _id: 5,
-      name:"Mango",
-      description:"Tropical mango ice cream made with fresh mangoes.",
-      image:"/assets/mango.png",
-      basePrice:5,
-    },
-
-    {
-      _id: 6,
-      name:"Coffee",
-      description:"Rich coffee ice cream made with organic coffee beans.",
-      image:"/assets/coffee.png",
-      basePrice:5,
-    }
-
-
-    
-  ];
-
-
+  useEffect(() => {
+    fetch("/api/menu-items")
+    .then(res => res.json())
+    .then(menuItems => setMenuItems(menuItems.slice(0,6)))
+  }, [])
 
   return (
     <section className={className}>

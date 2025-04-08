@@ -1,5 +1,4 @@
-//这个register页面的主要目的是收集用户的注册信息，然后将其发送到服务器以创建新用户。
-//这里用到了 useref，以方便递交成功清零的时候可以一键清空
+
 
 'use client';
 import GoogleIcon from "@/icons/GoogleIcon";
@@ -23,12 +22,7 @@ const RegisterPage = () => {
     const [creatingUser, setCreatingUser] = useState(false);   
     const router = useRouter();
     const formRef = useRef<HTMLFormElement>(null);
-
-     // 添加 console.log 语句来跟踪 isOpen 和 userCreated 状态变化
-     useEffect(() => {
-        console.log('isOpen changed:', userCreated);
-    }, [userCreated]); // 当 userCreated 状态变化时触发
-    
+  
     async function handleFormSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setCreatingUser(true);
@@ -41,18 +35,11 @@ const RegisterPage = () => {
                 headers: { 'Content-Type': 'application/json' }
               })
 
-              // 打印响应的原始内容
-              /*const text = await response.text();
-              console.log('Response text:', text);
-              
-              const data = JSON.parse(text);*/
-
               const data = await response.json();
 
               if (response.ok) {
                 setUserCreated(true);
-                formRef.current?.reset(); // 重置表单
-                // 重置状态
+                formRef.current?.reset();
                 setName('');
                 setEmail('');
                 setPassword('');
@@ -67,25 +54,7 @@ const RegisterPage = () => {
             }
 
         }
-
-
-     /*   const response = await fetch(`/api/register`, {
-          method: 'POST',
-          body: JSON.stringify({ name, email, password }),
-          headers: { 'Content-Type': 'application/json' }
-        }).then(res => res.json());*/
-
-
-   /*     if (response.error) {
-          setError(response.message);
-        } else {
-          setUserCreated(true);
-        }
-        setCreatingUser(false);
-      }*/
-    
-
-    
+   
     return(
         <section className="pt-12 pb-20">
             <h1 className="text-center text-dark text-4xl my-4">

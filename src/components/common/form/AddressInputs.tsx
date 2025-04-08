@@ -1,37 +1,96 @@
+/**
+ * Address Input Component
+ * 
+ * A reusable form component for handling address input fields.
+ * Key features:
+ * - Manages street address, city, state, country, and postal code inputs
+ * - Supports disabled states for individual fields
+ * - Handles value changes through props
+ * - Provides consistent styling across the application
+ * 
+ * Used in both profile editing and checkout flows, with different
+ * field restrictions based on context.
+ */
+
 import React from 'react'
 
-interface AddressinputsProps {
-  addressProps: any,
-  setAddressProps: (propName: string, value: string) => void,
-  disabled: boolean
+interface AddressInputsProps {
+  addressProps: {
+    streetAddress?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    postalCode?: string;
+  };
+  setAddressProps: (propName: string, value: string) => void;
+  disabled: {
+    streetAddress?: boolean;
+    city?: boolean;
+    state?: boolean;
+    country?: boolean;
+    postalCode?: boolean;
+  };
+  context: 'cart' | 'checkout' | 'orders' | 'profile';
 }
 
-const AddressInputs = ({ addressProps, setAddressProps, disabled }: AddressinputsProps) => {
-  const { phone, streetAddress, city, state, country, postalCode } = addressProps;
+const AddressInputs = ({ addressProps, setAddressProps, disabled, context }: AddressInputsProps) => {
   return (
     <>
-      <label> Phone number</label>
-      <input type="tel" placeholder='Phone number' disabled={disabled} value={phone ?? ''} onChange={e => setAddressProps('phone', e.target.value)} className='input' />
-      <label> Street address</label>
-      <input type="text" placeholder='Street address' disabled={disabled} value={streetAddress ?? ''} onChange={e => setAddressProps('streetAddress', e.target.value)} className='input' />
+      {/* Street Address Input */}
+      <div>
+        <label>Street Address:{context === 'cart' && <span className="text-red-500">*</span>}</label>
+        <input
+          type="text"
+          placeholder="Street address"
+          value={addressProps.streetAddress || ''}
+          onChange={(e) => setAddressProps('streetAddress', e.target.value)}
+          disabled={context === 'orders'}
+        
+          className='input'
+        />
+      </div>
+
+      {/* City and State Inputs */}
       <div className='grid grid-cols-2 gap-2'>
         <div>
-          <label> City</label>
-          <input type="text" placeholder='City' disabled={disabled} value={city ?? ''} onChange={e => setAddressProps('city', e.target.value)} className='input' />
+          <label>City{context === 'cart' && <span className="text-red-500">*</span>}</label>
+          <input 
+            type="text" 
+            value={addressProps.city || ''} 
+            disabled={disabled.city}
+            className='input' 
+          />
         </div>
         <div>
-          <label> State</label>
-          <input type="text" placeholder='State' disabled={disabled} value={state ?? ''} onChange={e => setAddressProps('state', e.target.value)} className='input' />
+          <label>State{context === 'cart' && <span className="text-red-500">*</span>}</label>
+          <input 
+            type="text" 
+            value={addressProps.state || ''} 
+            disabled={disabled.state}
+            className='input' 
+          />
         </div>
       </div>
+
+      {/* Country and Postal Code Inputs */}
       <div className='grid grid-cols-2 gap-2'>
         <div>
-          <label> Country</label>
-          <input type="text" placeholder='Country' disabled={disabled} value={country ?? ''} onChange={e => setAddressProps('country', e.target.value)} className='input' />
+          <label>Country{context === 'cart' && <span className="text-red-500">*</span>}</label>
+          <input 
+            type="text" 
+            value={addressProps.country || ''} 
+            disabled={disabled.country}
+            className='input' 
+          />
         </div>
         <div>
-          <label> Postal code</label>
-          <input type="text" placeholder='Postal code' disabled={disabled} value={postalCode ?? ''} onChange={e => setAddressProps('postalCode', e.target.value)} className='input' />
+          <label>Postal code{context === 'cart' && <span className="text-red-500">*</span>}</label>
+          <input 
+            type="text" 
+            value={addressProps.postalCode || ''} 
+            disabled={disabled.postalCode}
+            className='input' 
+          />
         </div>
       </div>
     </>

@@ -1,11 +1,11 @@
 'use client'
 import UserTabs from '@/components/layout/UserTabs'
 import UsersTable from '@/components/features/users/UsersTable'
-import useProfile from '@/components/hooks/useProfile'
+import {useProfile } from '@/components/hooks/useProfile'
 import UserProfile from '@/types/UserProfile'
 import React, { useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import Loader from '@/components/common/Loader'
 
 const UsersPage = () => {
@@ -26,6 +26,7 @@ const UsersPage = () => {
         throw new Error('Failed to fetch users');
       }
       const data = await response.json();
+      console.log('Users data from API:', data);
       setUsers(data);
     } catch (error) {
       console.error('Error fetching users:', error);

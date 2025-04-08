@@ -1,19 +1,77 @@
 import { Schema, model, models } from "mongoose";
-import bcrypt from 'bcrypt'
+import bcryptjs from 'bcryptjs';
+import CartProduct from "@/types/CartProduct";
+import mongoose from "mongoose";
+
+/*const CartProductSchema = new Schema({
+  menuItem: {
+    _id: { type: String, required: true },
+    name: { type: String, required: true },
+    basePrice: { type: Number, required: true },
+    category: { type: String, required: true },
+    image: { type: String },
+    sizes: { type: Array, default: [] },
+    extraIngredientsPrices: { type: Array, default: [] }
+  },
+  selectedSize: {
+    type: Schema.Types.Mixed,
+    default: null
+  },
+  selectedExtras: {
+    type: [Schema.Types.Mixed],
+    default: []
+  },
+  quantity: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 10,
+    default: 1
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+    expires: 60 * 60 * 24
+  }
+}, { _id: false });*/
+
+interface IUser extends Document {
+  _id: mongoose.Types.ObjectId;
+  name: string;
+  email: string;
+  password: string;
+  image?: string;
+  phone?: string;
+  streetAddress?: string;
+  postalCode?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  isAdmin: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  cart:{
+    menuItem: mongoose.Types.ObjectId; // Reference to the MenuItem model
+    selectedSize: any; // Mixed type for flexibility
+    selectedExtras: any[]; // Array for selected extras
+    quantity: number; // Quantity of the product
+    updatedAt: Date; // Timestamp for the cart item
+  }[];
+}
+
+// Cart schema definition
+const CartSchema = new Schema({
+  menuItem: { type: Schema.Types.ObjectId, ref: 'MenuItem', required: true }, // Reference to MenuItem model
+  selectedSize: { type: Schema.Types.Mixed, default: null }, // Flexible type for selected size
+  selectedExtras: { type: [Schema.Types.Mixed], default: [] }, // Array of selected extras
+  quantity: { type: Number, required: true, min: 1, max: 10, default: 1 }, // Minimum and maximum quantity
+  updatedAt: { type: Date, default: Date.now }, // Timestamp for the cart item
+}, { _id: false }); // No separate ObjectId for cart items
 
 const UserSchema = new Schema({
   name: { type: String },
   email: { type: String, required: true, unique: true },
-  password: {
-    type: String,
-    required: true,
-    validate: (password: string) => {
-      if (!password.length || password.length < 8) {
-        new Error('Password must be at least 8 characters');
-        return false;
-      }
-    }
-  },
+  password: { type: String },
   image: { type: String },
   phone: { type: String },
   streetAddress: { type: String },
@@ -22,58 +80,33 @@ const UserSchema = new Schema({
   state: { type: String },
   country: { type: String },
   isAdmin: { type: Boolean, default: false },
-}, { timestamps: true });
-
-UserSchema.post('validate', function (user) {
-  const unHashedPassword = user.password;
-  const salt = bcrypt.genSaltSync(10);
-  user.password = bcrypt.hashSync(unHashedPassword, salt);
-})
-
-export const User = models?.User || model('User', UserSchema);
-
-
-
-/*import mongoose, { Schema, Document, Model } from "mongoose";
-import bcrypt from 'bcrypt';
-
-interface IUser extends Document {
-  _id: mongoose.Types.ObjectId;
-  name: string;
-  email?: string;
-  password: string;
-  image: string;
-  phone: string;
-  streetAddress: string;
-  postalCode: string;
-  city: string;
-  state: string;
-  country: string;
-  isAdmin: boolean;
-  createdAt?: Date;
-  updatedAt?: Date;
-}
-
-const UserSchema: Schema<IUser> = new Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true, minlength: 8 },
-  image: { type: String, required: false },
-  phone: { type: String, required: false },
-  streetAddress: { type: String, required: false },
-  postalCode: { type: String, required: false },
-  city: { type: String, required: false },
-  state: { type: String, required: false },
-  country: { type: String, required: false },
-  isAdmin: { type: Boolean, default: false },
-}, { timestamps: true });
-
-UserSchema.pre('save', function (next) {
-  if (!this.isModified('password')) return next();
-  const salt = bcrypt.genSaltSync(10);
-  this.password = bcrypt.hashSync(this.password, salt);
-  next();
+  cart: {
+    type: [CartSchema],
+    default: []
+  }
+}, {
+  timestamps: true,
+  strict: false
 });
 
-export const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", UserSchema);
+/*UserSchema.post('validate', function (user) {
+  if (user.password && user.password.length >= 8) {
+    const unHashedPassword = user.password;
+    const salt = bcryptjs.genSaltSync(10);
+    user.password = bcryptjs.hashSync(unHashedPassword, salt);
+  }
+})*/
+
+// Middleware: Hash password before saving
+/*
+UserSchema.pre('save', async function (next) {
+  const user = this as any;
+  if (user.isModified('password') && user.password.length >= 8) {
+    const salt = await bcryptjs.genSalt(10);
+    user.password = await bcryptjs.hash(user.password, salt);
+  }
+  next();
+});
 */
+
+export const User = models?.User || model('User', UserSchema);

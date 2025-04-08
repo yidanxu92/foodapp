@@ -1,22 +1,26 @@
 import mongoose from "mongoose";
 import { User } from "@/app/models/User";
 import { NextResponse } from "next/server";
-//import { isAdmin } from "../auth/[...nextauth]/route";
+import { isAdmin } from "@/libs/admin";
 
 export async function GET() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI!);
+    if (mongoose.connection.readyState !== 1) {
+      await mongoose.connect(process.env.MONGODB_URI!);
+    }
     
-    /*if (await isAdmin()) {
-      const users = await User.find();
-      return NextResponse.json(users);
-    } else {
-      return NextResponse.json([]);
-    }*/
+    const admin = await isAdmin();
+    if (!admin) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const users = await User.find({}, 'name email image phone isAdmin createdAt updatedAt');
+
+
+    return NextResponse.json(users);
+
   } catch (error) {
-    console.error("Error connecting to MongoDB:", error);
+    console.error("Error in users API:", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
-  } finally {
-    await mongoose.disconnect();
   }
 }

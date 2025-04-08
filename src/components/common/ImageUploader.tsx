@@ -8,30 +8,39 @@ interface ImageUploaderProps {
 
 const ImageUploader = ({ setImageLink, children }: ImageUploaderProps) => {
   
-  async function handleFileChange(event: ChangeEvent<HTMLInputElement>): Promise<void> {
-    const files = event.target.files;
-    if (files && files.length === 1) {
-      const formData = new FormData;
-      formData.set('file', files[0]);
-
-      const uploadPromise = new Promise<string | undefined>(async (resolve, reject) => {
-        await fetch('/api/upload', {
+  async function handleFileChange(ev: ChangeEvent<HTMLInputElement>): Promise<void> {
+    const files = ev.target.files;
+    if (files?.length === 1) {
+      const data = new FormData();
+      data.append('file', files[0]);
+      
+      try {
+        const response = await fetch('/api/upload', {
           method: 'POST',
-          body: formData
-        }).then(response => {
-          if (response.ok) {
-            response.json().then(link => { setImageLink(link), resolve(link) });
-          } else {
-            reject();
-          }
+          body: data,
         });
-      })
-
-      toast.promise(uploadPromise, {
-        loading: "Uploading...",
-        success: "Upload success",
-        error: "Upload failed",
-      })
+        
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => ({}));
+          console.error('Upload failed:', errorData);
+          toast.error('Upload failed: ' + (errorData.details || 'Unknown error'));
+          return;
+        }
+        
+        const responseData = await response.json();
+        console.log('Upload response:', responseData);
+        
+        if (responseData.link) {
+          setImageLink(responseData.link);
+          toast.success('Image uploaded successfully!');
+        } else {
+          console.error('Invalid response format:', responseData);
+          toast.error('Invalid server response');
+        }
+      } catch (error) {
+        console.error('Upload request failed:', error);
+        toast.error('Upload request failed');
+      }
     }
   }
 

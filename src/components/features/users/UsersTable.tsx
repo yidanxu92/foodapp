@@ -10,7 +10,7 @@ interface UsersTableProps {
 
 const UsersTable = ({ users }: UsersTableProps) => {
   return (
-    <Table aria-label="Users Table" isStriped classNames={{ th: "text-md", td: "text-md text-gray-300" }}>
+    <Table aria-label="Users Table" isStriped classNames={{ th: "text-md", td: "text-md text-gray-600" }}>
       <TableHeader>
         <TableColumn>Name</TableColumn>
         <TableColumn>Role</TableColumn>
@@ -40,7 +40,7 @@ const UsersTable = ({ users }: UsersTableProps) => {
               <TableCell>
                 <div className="relative flex items-center gap-2">
                   <Tooltip content="Edit user">
-                    <Link className="text-lg text-gray-300 cursor-pointer active:opacity-50" href={`/users/${user._id}`}>
+                    <Link className="text-lg text-gray-600 cursor-pointer active:opacity-50" href={`/users/${user._id}`}>
                       <PencilSquareIcon className={"w-6"} />
                     </Link>
                   </Tooltip>

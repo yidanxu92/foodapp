@@ -1,13 +1,17 @@
-
+'use client'
 import MenuItem from '@/types/MenuItem';
-import { Button} from '@nextui-org/react'
-
+import { Button, Link } from '@nextui-org/react'
+import { useSession } from 'next-auth/react'
 interface HomeMenuItemCardProps {
   menuItem: MenuItem;
   index: number;
 }
 
 const HomeMenuItemCard = ({ menuItem, index }: HomeMenuItemCardProps) => {
+
+  const { data: session } = useSession();
+  const hasSizesOrExtras = menuItem.sizes.length > 0 || menuItem.extraIngredientsPrices.length > 0;
+  
   const isLeftAligned = index % 6 < 3;
   return (
   <div className='grid grid-cols-2'>
@@ -23,7 +27,7 @@ const HomeMenuItemCard = ({ menuItem, index }: HomeMenuItemCardProps) => {
               <p className='text-dark'>
                 ${(menuItem.basePrice as number).toFixed(2)}
               </p>
-              <Button radius='none' size='sm' className='bg-transparent border hover:bg-primary hover:text-dark'>Order</Button>
+              <Button as={Link} href={session ? '/menu' : '/login'} radius='none' size='sm' className='bg-transparent border hover:bg-primary hover:text-dark'>Order</Button>
             </div>
           </div>
         </div>

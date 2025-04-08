@@ -1,7 +1,7 @@
 'use client'
 import ProfileForm from '@/components/common/form/ProfileForm'
 import UserTabs from '@/components/layout/UserTabs'
-import useProfile from '@/components/hooks/useProfile'
+import { useProfile } from '@/components/hooks/useProfile'
 import UserProfile from '@/types/UserProfile'
 import { Breadcrumbs, BreadcrumbItem } from '@nextui-org/react'
 import { redirect, useParams } from 'next/navigation'
@@ -31,7 +31,6 @@ const EditUserPage = () => {
       setUser(userData);
     } catch (error) {
       console.error('Error fetching user:', error);
-      // Handle error, e.g., show an error message or redirect
     }
   }
 
@@ -77,7 +76,7 @@ const EditUserPage = () => {
     <section className='pt-10 pb-20 max-w-6xl mx-auto'>
       {profileData &&
         <>
-          <UserTabs admin={profileData.isAdmin} />
+          <UserTabs admin={profileData.isAdmin || false} />
           <Breadcrumbs size='lg' className="mt-12">
             <BreadcrumbItem href='/users'>Users</BreadcrumbItem>
             <BreadcrumbItem>Edit </BreadcrumbItem>

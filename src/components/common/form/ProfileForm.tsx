@@ -3,7 +3,7 @@ import ImageUploader from '../ImageUploader'
 import { Avatar, Button, Checkbox } from '@nextui-org/react'
 import { PencilIcon } from '@/icons/PencilIcon'
 import UserProfile from '@/types/UserProfile'
-import useProfile from '@/components/hooks/useProfile'
+import { useProfile } from '@/components/hooks/useProfile'
 import AddressInputs from './AddressInputs'
 
 interface ProfileFormProps {
@@ -12,6 +12,7 @@ interface ProfileFormProps {
 }
 
 const ProfileForm = ({ user, onSave }: ProfileFormProps) => {
+
   const [userName, setUserName] = useState(user?.name || '');
   const [userImage, setUserImage] = useState(user?.image || '');
   const [phone, setPhone] = useState(user?.phone || '');
@@ -38,7 +39,11 @@ const ProfileForm = ({ user, onSave }: ProfileFormProps) => {
         <ImageUploader setImageLink={setUserImage}>
           <div className='relative'>
             {userImage ? (
-              <Avatar src={userImage!} className="w-[160px] h-[160px]" />
+              <Avatar 
+                src={userImage} 
+                className="w-[160px] h-[160px]" 
+                onError={() => console.error('Avatar image failed to load:', userImage)}
+              />
             ) : (
               <Avatar src='' showFallback className="w-[160px] h-[160px]" />
             )}
@@ -48,14 +53,36 @@ const ProfileForm = ({ user, onSave }: ProfileFormProps) => {
           </div>
         </ImageUploader >
       </div>
-      <form className='col-span-4' onSubmit={(e) => onSave(e, { name: userName, image: userImage, phone, streetAddress, postalCode, city, state, country, isAdmin })}>
+      <form className='col-span-4' onSubmit={(e) => onSave(e, { 
+        name: userName, 
+        email: user?.email || '',
+        image: userImage, 
+        phone, 
+        streetAddress, 
+        postalCode, 
+        city, 
+        state, 
+        country, 
+        isAdmin 
+      })}>
         <label> Full name</label>
         <input type="text" placeholder='Full name' value={userName ?? ''} onChange={e => setUserName(e.target.value)} className='input' />
         <label> Email</label>
         <input type="email" placeholder="Email" value={user?.email ?? ''} disabled className='input' />
+        <label> Phone</label>
+        <input type="text" placeholder="Phone" value={phone ?? ''} onChange={e => setPhone(e.target.value)} className='input' />
         <AddressInputs
-          addressProps={{ phone, streetAddress, city, state, country, postalCode }}
-          setAddressProps={(propName: string, value: string) => handleAddressChange(propName, value)} disabled={false} />
+          addressProps={{ streetAddress, city, state, country, postalCode }}
+          setAddressProps={(propName: string, value: string) => handleAddressChange(propName, value)}
+          disabled={{
+            streetAddress: false,
+            city: false,
+            state: false,
+            country: false,
+            postalCode: false
+          }}
+          context="profile"
+        />
         {loggedInUserData?.isAdmin && (
           <div className='my-2'>
             <Checkbox checked={isAdmin} defaultSelected={isAdmin} value={'1'} onChange={(e) => setIsAdmin(e.target.checked)}>Admin</Checkbox>
